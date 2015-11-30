@@ -43,6 +43,8 @@ function parseCommit(commit) {
 function parseBreakingChange(commit) {
     if (isBreakingChange(commit)) {
         breaking++;
+        feat = 0;
+        fix = 0;
     }
 }
 
