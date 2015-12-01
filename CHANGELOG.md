@@ -1,5 +1,15 @@
+<a name="0.2.0"></a>
+# [0.2.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.1.1...v0.2.0) (2015-12-01)
+
+
+### Features
+
+* **api:** create nodejs api ([8cf496e](https://github.com/JamieMason/conventional-recommended-version/commit/8cf496e))
+
+
+
 <a name="0.1.1"></a>
-## [0.1.1](https://github.com/JamieMason/conventional-recommended-version/compare/0.1.0...v0.1.1) (2015-11-30)
+## [0.1.1](https://github.com/JamieMason/conventional-recommended-version/compare/0.1.0...0.1.1) (2015-11-30)
 
 
 ### Bug Fixes
