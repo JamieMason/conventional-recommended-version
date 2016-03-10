@@ -1,5 +1,15 @@
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.2.0...v0.3.0) (2016-03-10)
+
+
+### Features
+
+* **compute-version:** reset versions on release commits ([e6a13fd](https://github.com/JamieMason/conventional-recommended-version/commit/e6a13fd))
+
+
+
 <a name="0.2.0"></a>
-# [0.2.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.1.1...v0.2.0) (2015-12-01)
+# [0.2.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.1.1...0.2.0) (2015-12-01)
 
 
 ### Features

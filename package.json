@@ -1,7 +1,7 @@
 {
   "name": "conventional-recommended-version",
   "description": "Using a conventional-changelog commit history, determine the current version number of your project.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Jamie Mason <siunmaru@gmail.com>",
   "bin": "cli.js",
   "bugs": {
