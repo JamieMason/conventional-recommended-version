@@ -7,8 +7,7 @@ module.exports = {
 };
 
 function get(options, done) {
-
-    var postfix = options.postfix ? '-' + options.postfix : '';
+    var postfix = getPostfix(options.postfix);
     var directory = options.directory;
 
     var breaking = 0;
@@ -31,41 +30,54 @@ function get(options, done) {
     }
 
     function parseCommit(commit) {
-        parseBreakingChange(commit);
-        parseFeature(commit);
-        parseFix(commit);
+      return parseMessage(commit.body.trim());
     }
 
-    function parseBreakingChange(commit) {
-        if (isBreakingChange(commit)) {
+    function parseMessage(message) {
+        if (isRelease(message)) {
+            var release = parseReleaseCommit(message);
+            breaking = release.major;
+            feat = release.minor;
+            fix = release.patch;
+        } else if (isBreakingChange(message)) {
             breaking++;
             feat = 0;
             fix = 0;
-        }
-    }
-
-    function parseFeature(commit) {
-        if (isFeature(commit)) {
+        } else if (isFeature(message)) {
             feat++;
             fix = 0;
-        }
-    }
-
-    function parseFix(commit) {
-        if (isFix(commit)) {
+        } else if (isFix(message)) {
             fix++;
         }
     }
 
-    function isFeature(commit) {
-        return commit.body.search(/^feat\(/) !== -1;
+    function isRelease(message) {
+        return message.startsWith('chore(release)');
     }
 
-    function isFix(commit) {
-        return commit.body.search(/^fix\(/) !== -1;
+    function isFeature(message) {
+        return message.startsWith('feat(');
     }
 
-    function isBreakingChange(commit) {
-        return commit.body.search(/BREAKING CHANGE/) !== -1;
+    function isFix(message) {
+        return message.startsWith('fix(');
+    }
+
+    function isBreakingChange(message) {
+        return message.search(/BREAKING CHANGE/) !== -1;
+    }
+
+    function parseReleaseCommit(message) {
+        var parts = message.split(/[ \.-]/);
+        return {
+            major: parseInt(parts[1], 10),
+            minor: parseInt(parts[2], 10),
+            patch: parseInt(parts[3], 10),
+            postfix: getPostfix(parts[4])
+        };
+    }
+
+    function getPostfix(value) {
+        return value ? '-' + value : '';
     }
 }
