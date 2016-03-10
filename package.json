@@ -7,24 +7,12 @@
   "bugs": {
     "url": "https://github.com/JamieMason/conventional-recommended-version/issues"
   },
-  "config": {
-    "ghooks": {
-      "commit-msg": "node_modules/validate-commit-msg/index.js"
-    }
-  },
-  "czConfig": {
-    "path": "node_modules/cz-conventional-changelog"
-  },
   "dependencies": {
     "commander": "2.9.0",
     "gitlog": "2.1.2"
   },
   "devDependencies": {
-    "commitizen": "2.1.0",
-    "conventional-changelog": "0.5.1",
-    "cz-conventional-changelog": "1.1.4",
-    "fixpack": "2.2.0",
-    "validate-commit-msg": "1.0.0"
+    "commit-release": "0.3.0"
   },
   "homepage": "https://github.com/JamieMason/conventional-recommended-version#readme",
   "keywords": [
@@ -40,9 +28,6 @@
     "url": "git+https://github.com/JamieMason/conventional-recommended-version.git"
   },
   "scripts": {
-    "changelog-generator": "conventional-changelog -p angular -i CHANGELOG.md -w -r 0",
-    "commit-prompt": "git-cz",
-    "pre-release-commit": "npm run version-setter && npm run changelog-generator && git add . && git commit -m 'chore(release): '$(node cli.js) && git tag $(node cli.js)",
-    "version-setter": "npm version $(node cli.js) --no-git-tag-version --force && fixpack"
+    "commit-release": "commit-release"
   }
 }
