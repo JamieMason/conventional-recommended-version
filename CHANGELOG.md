@@ -1,5 +1,15 @@
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/JamieMason/conventional-recommended-version/compare/0.3.0...v0.3.1) (2016-05-13)
+
+
+### Bug Fixes
+
+* **compute-version:** ensure commits are read in correct order ([e493f60](https://github.com/JamieMason/conventional-recommended-version/commit/e493f60)), closes [#2](https://github.com/JamieMason/conventional-recommended-version/issues/2)
+
+
+
 <a name="0.3.0"></a>
-# [0.3.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.2.0...v0.3.0) (2016-03-10)
+# [0.3.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.2.0...0.3.0) (2016-03-10)
 
 
 ### Features

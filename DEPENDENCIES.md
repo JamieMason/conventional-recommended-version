@@ -20,6 +20,7 @@ npm install conventional-recommended-version --save
 ## Dev Dependencies
 
 - [commit-release](https://github.com/JamieMason/commit-release): Commit and tag a release for a conventional changelog project.
+- [semistandard](https://github.com/Flet/semistandard): All the goodness of `feross/standard` with semicolons sprinkled on top.
 
 
 ## License
