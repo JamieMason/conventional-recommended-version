@@ -1,11 +1,12 @@
-'use strict';
+// modules
+var git = require('./src/git');
 
-var gitlog = require('gitlog');
-
+// public
 module.exports = {
   get: get
 };
 
+// implementation
 function get (options, done) {
   var postfix = getPostfix(options.postfix);
   var directory = options.directory;
@@ -14,23 +15,19 @@ function get (options, done) {
   var feat = 0;
   var fix = 0;
 
-  gitlog({
-    fields: ['subject', 'body'],
-    number: 9000 * 1000 * 1000,
-    repo: directory
-  }, parseGitHistory);
+  git.getMessages(directory, onGitLog);
 
-  function parseGitHistory (error, commits) {
-    if (!error) {
-      commits.reverse().forEach(parseCommit);
-      done(null, breaking + '.' + feat + '.' + fix + postfix);
+  function onGitLog (err, messages) {
+    if (!err) {
+      messages.forEach(parseMessage);
+      done(null, getVersion());
     } else {
-      done(error);
+      done(err);
     }
   }
 
-  function parseCommit (commit) {
-    return parseMessage(commit.body.trim());
+  function getVersion () {
+    return breaking + '.' + feat + '.' + fix + postfix;
   }
 
   function parseMessage (message) {
