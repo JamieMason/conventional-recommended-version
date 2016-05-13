@@ -12,7 +12,8 @@
     "gitlog": "2.1.2"
   },
   "devDependencies": {
-    "commit-release": "0.3.0"
+    "commit-release": "0.6.0",
+    "semistandard": "7.0.5"
   },
   "homepage": "https://github.com/JamieMason/conventional-recommended-version#readme",
   "keywords": [
@@ -28,6 +29,7 @@
     "url": "git+https://github.com/JamieMason/conventional-recommended-version.git"
   },
   "scripts": {
-    "commit-release": "commit-release"
+    "commit-release": "commit-release",
+    "lint": "semistandard --format"
   }
 }
