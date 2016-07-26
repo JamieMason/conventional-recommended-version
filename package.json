@@ -9,11 +9,11 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "gitlog": "2.1.2"
+    "gitlog": "2.3.0"
   },
   "devDependencies": {
-    "commit-release": "0.6.0",
-    "semistandard": "7.0.5"
+    "commit-release": "0.6.1",
+    "semistandard": "8.0.0"
   },
   "homepage": "https://github.com/JamieMason/conventional-recommended-version#readme",
   "keywords": [
