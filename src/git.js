@@ -11,7 +11,10 @@ function getMessages (directory, done) {
   gitlog({
     fields: ['authorDate', 'body'],
     number: Number.MAX_SAFE_INTEGER,
-    repo: directory
+    repo: directory,
+    execOptions: {
+      maxBuffer: Number.MAX_SAFE_INTEGER
+    }
   }, onMessages);
 
   function onMessages (error, commits) {
