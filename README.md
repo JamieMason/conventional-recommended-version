@@ -1,5 +1,7 @@
 # conventional-recommended-version
 
+[![Analytics](https://ga-beacon.appspot.com/UA-45466560-5/conventional-recommended-version?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
+
 Using a [conventional-changelog](https://github.com/ajoslin/conventional-changelog) commit history, determine the current version number of your project. 
 
 This is done by reading your local git commit history and searching for fixes, features, and breaking changes.
