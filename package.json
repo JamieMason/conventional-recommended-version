@@ -1,7 +1,7 @@
 {
   "name": "conventional-recommended-version",
   "description": "Determine the semantic version number of your project",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bin": {
     "conventional-recommended-version": "dist/bin.js"
