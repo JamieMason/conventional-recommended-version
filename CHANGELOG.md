@@ -1,3 +1,13 @@
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/JamieMason/conventional-recommended-version/compare/0.4.0...0.4.1) (2017-08-26)
+
+
+### Bug Fixes
+
+* **node:** fix path to conventional-recommended-version node module ([c92290f](https://github.com/JamieMason/conventional-recommended-version/commit/c92290f))
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.3.2...0.4.0) (2017-08-25)
 
