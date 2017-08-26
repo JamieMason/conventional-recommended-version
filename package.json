@@ -41,7 +41,7 @@
     "log"
   ],
   "license": "MIT",
-  "main": "conventional-recommended-version",
+  "main": "dist/index.js",
   "repository": "JamieMason/conventional-recommended-version",
   "scripts": {
     "build": "babel --out-dir ./dist --ignore node_modules ./src",
