@@ -6,12 +6,12 @@ const isFeature = ({ subject }) => subject.startsWith('feat(');
 const isFix = ({ subject }) => subject.startsWith('fix(');
 const isRelease = ({ subject }) => subject.startsWith('chore(release)');
 
-const snapToRelease = (version, { body, subject }) => {
-  const [_, major, minor, patch] = subject.split(/[ .-]/);
+const snapToRelease = (version, { subject }) => {
+  const values = subject.split(/[ .-]/);
   return {
-    major: parseInt(major, 10),
-    minor: parseInt(minor, 10),
-    patch: parseInt(patch, 10)
+    major: parseInt(values[1], 10),
+    minor: parseInt(values[2], 10),
+    patch: parseInt(values[3], 10)
   };
 };
 
