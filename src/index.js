@@ -1,7 +1,6 @@
-import logservable from 'logservable';
+import * as logservable from 'logservable';
 
 const getPostfix = postfix => (postfix ? `-${postfix}` : '');
-
 const isBreakingChange = ({ body }) => body.search(/BREAKING CHANGE/) !== -1;
 const isFeature = ({ subject }) => subject.startsWith('feat(');
 const isFix = ({ subject }) => subject.startsWith('fix(');
@@ -48,8 +47,8 @@ const getNextVersion = (version, commit) => {
 };
 
 export default ({ directory, postfix }, done) => {
-  const log$ = logservable(directory, ['body', 'subject'], true);
-  const version$ = log$.fold(getNextVersion, { major: 0, minor: 0, patch: 0 });
+  const commit$ = logservable.commits(directory, ['body', 'subject'], true);
+  const version$ = commit$.fold(getNextVersion, { major: 0, minor: 0, patch: 0 });
   const nextVersion$ = version$.last();
 
   nextVersion$.addListener({

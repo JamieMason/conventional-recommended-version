@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "commander": "2.11.0",
-    "logservable": "0.2.0"
+    "logservable": "1.0.0"
   },
   "devDependencies": {
     "babel-cli": "6.26.0",
@@ -24,7 +24,7 @@
     "eslint-config-xo": "0.18.2",
     "eslint-plugin-unicorn": "2.1.2",
     "fast-async": "6.3.0",
-    "rimraf": "2.6.1",
+    "rimraf": "2.6.2",
     "xo": "0.18.2"
   },
   "files": [
