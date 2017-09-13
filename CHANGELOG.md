@@ -1,3 +1,13 @@
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/JamieMason/conventional-recommended-version/compare/0.4.1...0.4.2) (2017-09-13)
+
+
+### Bug Fixes
+
+* **lint:** fix lint errors ([8d57ca0](https://github.com/JamieMason/conventional-recommended-version/commit/8d57ca0))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/JamieMason/conventional-recommended-version/compare/0.4.0...0.4.1) (2017-08-26)
 

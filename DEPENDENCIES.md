@@ -4,8 +4,6 @@ Determine the semantic version number of your project
 
 ## Installation
 
-Download node at [nodejs.org](http://nodejs.org) and install it, if you haven't already.
-
 ```sh
 npm install conventional-recommended-version --save
 ```
@@ -39,4 +37,3 @@ npm test
 ## License
 
 MIT
-
