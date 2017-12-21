@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import program from 'commander';
-import pkg from '../package.json';
 import crv from './index';
+
+const program = require('commander');
+const pkg = require('../package.json');
 
 program
   .version(pkg.version)
