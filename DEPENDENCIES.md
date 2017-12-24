@@ -1,4 +1,4 @@
-# conventional-recommended-version
+# conventional-recommended-version 
 
 Determine the semantic version number of your project
 
@@ -8,29 +8,21 @@ Determine the semantic version number of your project
 npm install conventional-recommended-version --save
 ```
 
-## Tests
 
-```sh
-npm install
-npm test
-```
 
 ## Dependencies
 
-* [commander](https://github.com/tj/commander.js): the complete solution for node.js command-line programs
-* [logservable](https://github.com/JamieMason/logservable): git log as an observable stream of JSON objects
+- [commander](https://github.com/tj/commander.js): the complete solution for node.js command-line programs
+- [logservable](https://github.com/JamieMason/logservable): git log as an observable stream of JSON objects
 
 ## Dev Dependencies
 
-* [babel-cli](https://github.com/babel/babel/tree/master/packages): Babel command line.
-* [babel-plugin-transform-object-rest-spread](https://github.com/babel/babel/tree/master/packages): Compile object rest and spread to ES5
-* [babel-preset-es2015](https://github.com/babel/babel/tree/master/packages): Babel preset for all es2015 plugins.
-* [cz-conventional-changelog](https://github.com/commitizen/cz-conventional-changelog): Commitizen adapter following the conventional-changelog format.
-* [eslint-config-xo](https://github.com/sindresorhus/eslint-config-xo): ESLint shareable config for XO
-* [eslint-plugin-unicorn](https://github.com/sindresorhus/eslint-plugin-unicorn): Various awesome ESLint rules
-* [fast-async](https://github.com/MatAtBread/fast-async): fast-async/await transformer Babel plugin
-* [rimraf](https://github.com/isaacs/rimraf): A deep deletion module for node (like `rm -rf`)
-* [xo](https://github.com/sindresorhus/xo): JavaScript happiness style linter ❤️
+- [@types/node](https://www.github.com/DefinitelyTyped/DefinitelyTyped.git): TypeScript definitions for Node.js
+- [prettier](https://github.com/prettier/prettier): Prettier is an opinionated code formatter
+- [rimraf](https://github.com/isaacs/rimraf): A deep deletion module for node (like `rm -rf`)
+- [tslint](https://github.com/palantir/tslint): An extensible static analysis linter for the TypeScript language
+- [typescript](https://github.com/Microsoft/TypeScript): TypeScript is a language for application scale JavaScript development
+
 
 ## License
 
