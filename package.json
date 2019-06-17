@@ -9,7 +9,7 @@
   "bugs": "https://github.com/JamieMason/conventional-recommended-version/issues",
   "dependencies": {
     "commander": "2.12.2",
-    "logservable": "1.2.0"
+    "logservable": "1.3.0"
   },
   "devDependencies": {
     "@types/node": "8.5.2",
