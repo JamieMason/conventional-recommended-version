@@ -8,7 +8,7 @@
   },
   "bugs": "https://github.com/JamieMason/conventional-recommended-version/issues",
   "dependencies": {
-    "commander": "2.12.2",
+    "commander": "2.20.0",
     "logservable": "1.2.0"
   },
   "devDependencies": {
