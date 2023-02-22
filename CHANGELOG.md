@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/JamieMason/conventional-recommended-version/compare/1.0.0...1.1.0) (2023-02-22)
+
+
+### Features
+
+* **api:** rename method to getVersion ([8d55fa7](https://github.com/JamieMason/conventional-recommended-version/commit/8d55fa7b80773adbd6de0e6b99e61fbd7a0bbd6d))
+
+
+
 # [1.0.0](https://github.com/JamieMason/conventional-recommended-version/compare/0.5.2...1.0.0) (2023-02-22)
 
 
