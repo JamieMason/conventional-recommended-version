@@ -1,46 +1,66 @@
-import { commits } from 'logservable';
-import { ICommit } from 'logservable/dist/typings';
-import { CommitAssertion, Handler, IOptions, IVersion, VersionMap } from './typings';
+import type { Giterator } from 'giterator';
+import { giterator } from 'giterator';
 
-const isBreakingChange: CommitAssertion = ({ body = '' }) => body.search(/BREAKING CHANGE/) !== -1;
-const isFeature: CommitAssertion = ({ subject = '' }) => subject.startsWith('feat(');
-const isFix: CommitAssertion = ({ subject = '' }) => subject.startsWith('fix(');
-const isRelease: CommitAssertion = ({ subject = '' }) => subject.startsWith('chore(release)');
+export interface Semver {
+  major: number;
+  minor: number;
+  patch: number;
+}
 
-const toSemver = ({ major, minor, patch }: IVersion, postfix: string = ''): string =>
-  `${major}.${minor}.${patch}${postfix ? `-${postfix}` : ''}`;
+export async function conventionalRecommendedVersion(
+  directory: string,
+): Promise<Semver> {
+  const commitsAscending: Giterator.Commit[] = [];
 
-const snapToRelease = (version: IVersion, { subject = '' }: ICommit) => {
-  const values = subject.split(/[ .-]/);
-  return {
-    major: parseInt(values[1], 10),
-    minor: parseInt(values[2], 10),
-    patch: parseInt(values[3], 10)
-  };
-};
+  let initialVersion: Semver = { major: 0, minor: 0, patch: 0 };
 
-const addBreakingChange: VersionMap = (version) => ({
-  major: version.major + 1,
-  minor: 0,
-  patch: 0
-});
+  for await (const commit of giterator(directory, {
+    pageSize: 20,
+    skipMerges: true,
+    tokenNames: ['body', 'subject', 'refNames'],
+  })) {
+    commitsAscending.unshift(commit);
+    if (commit.refNames?.includes('tag:')) {
+      const semverTag = getSemverTag(commit);
+      if (semverTag) {
+        initialVersion = parseSemver(semverTag);
+        break;
+      }
+    }
+  }
 
-const addFeature: VersionMap = (version) => ({
-  major: version.major,
-  minor: version.minor + 1,
-  patch: version.patch
-});
+  return commitsAscending.reduce(getNextVersion, initialVersion);
+}
 
-const addFix: VersionMap = (version) => ({
-  major: version.major,
-  minor: version.minor,
-  patch: version.patch + 1
-});
+function getSemverTag(commit: Giterator.Commit): string | undefined {
+  return `${commit.refNames}`
+    .split(',')
+    .filter((str) => str.includes('tag: '))
+    .map((str) => str.replace('tag: ', ''))
+    .filter(isSemver)[0];
+}
 
-const getNextVersion = (version: IVersion, commit: ICommit): IVersion => {
-  if (isRelease(commit)) {
-    return snapToRelease(version, commit);
-  } else if (isBreakingChange(commit)) {
+function isSemver(version: unknown): version is string {
+  const ints = '[0-9]+';
+  const dot = '\\.';
+  const semver = new RegExp(`^${ints}${dot}${ints}${dot}${ints}`);
+  return typeof version === 'string' && version.search(semver) !== -1;
+}
+
+function parseSemver(str: string): Semver {
+  const [major, minor, patch] = str.split('.');
+  if (major && minor && patch) {
+    return {
+      major: Number(major),
+      minor: Number(minor),
+      patch: Number(patch),
+    };
+  }
+  throw new Error(`"${str}" is not semver`);
+}
+
+function getNextVersion(version: Semver, commit: Giterator.Commit): Semver {
+  if (isBreakingChange(commit)) {
     return addBreakingChange(version);
   } else if (isFeature(commit)) {
     return addFeature(version);
@@ -48,19 +68,40 @@ const getNextVersion = (version: IVersion, commit: ICommit): IVersion => {
     return addFix(version);
   }
   return version;
-};
+}
 
-export default ({ directory, postfix }: IOptions, done: Handler) => {
-  const commit$ = commits(directory, ['body', 'subject'], true);
-  const initialVersion = { major: 0, minor: 0, patch: 0 };
-  const version$ = commit$.reduce(getNextVersion, initialVersion);
+function isBreakingChange({ body = '' }) {
+  return body.search(/BREAKING CHANGE/) !== -1;
+}
 
-  version$.last().subscribe({
-    next(version: IVersion) {
-      done(null, toSemver(version, postfix));
-    },
-    error(err: Error) {
-      done(err);
-    }
-  });
-};
+function addBreakingChange(version: Semver): Semver {
+  return {
+    major: version.major + 1,
+    minor: 0,
+    patch: 0,
+  };
+}
+
+function isFeature({ subject = '' }) {
+  return subject.startsWith('feat(');
+}
+
+function addFeature(version: Semver): Semver {
+  return {
+    major: version.major,
+    minor: version.minor + 1,
+    patch: version.patch,
+  };
+}
+
+function isFix({ subject = '' }) {
+  return subject.startsWith('fix(');
+}
+
+function addFix(version: Semver): Semver {
+  return {
+    major: version.major,
+    minor: version.minor,
+    patch: version.patch + 1,
+  };
+}

@@ -1,21 +1,11 @@
 {
-  "files": [
-    "./src/bin.ts",
-    "./src/index.ts"
-  ],
+  "extends": "@tsconfig/node14/tsconfig.json",
   "compilerOptions": {
     "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "es6"
-    ],
+    "noUncheckedIndexedAccess": true,
     "outDir": "./dist",
-    "pretty": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "es3",
-    "types": [
-      "node"
-    ]
-  }
+    "strict": true
+  },
+  "include": ["./package.json", "./src/**/*.ts"],
+  "exclude": ["./src/**/*.spec.ts"]
 }

@@ -6,10 +6,12 @@
 [![Follow JamieMason on GitHub](https://img.shields.io/github/followers/JamieMason.svg?style=social&label=Follow)](https://github.com/JamieMason)
 [![Follow fold_left on Twitter](https://img.shields.io/twitter/follow/fold_left.svg?style=social&label=Follow)](https://twitter.com/fold_left)
 
-Using a [conventional-changelog](https://github.com/ajoslin/conventional-changelog) commit history, determine the
-current version number of your project.
+Using a
+[conventional-changelog](https://github.com/ajoslin/conventional-changelog)
+commit history, determine the current version number of your project.
 
-This is done by reading your local git commit history and searching for fixes, features, and breaking changes.
+This is done by reading your local git commit history and searching for fixes,
+features, and breaking changes.
 
 ## 🌩 Installation
 
