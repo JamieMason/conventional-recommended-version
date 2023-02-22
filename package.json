@@ -1,7 +1,7 @@
 {
   "name": "conventional-recommended-version",
   "description": "Determine the semantic version number of your project",
-  "version": "0.5.2",
+  "version": "1.0.0",
   "author": "Jamie Mason <jamie@foldleft.io> (https://github.com/JamieMason)",
   "bugs": "https://github.com/JamieMason/conventional-recommended-version/issues",
   "dependencies": {
