@@ -7,9 +7,7 @@ export interface Semver {
   patch: number;
 }
 
-export async function conventionalRecommendedVersion(
-  directory: string,
-): Promise<Semver> {
+export async function getVersion(directory: string): Promise<Semver> {
   const commitsAscending: Giterator.Commit[] = [];
 
   let initialVersion: Semver = { major: 0, minor: 0, patch: 0 };
